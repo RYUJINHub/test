@@ -2530,7 +2530,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 	if _G.FastAttackFaiFao_Mode == "Fast Attack" then
 		_G.Fast_Delay = 0.1
 	elseif _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.15
+		_G.Fast_Delay = 0.2
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0
 	end
