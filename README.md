@@ -2514,7 +2514,7 @@ end
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
-local Farming = Tabs.Main:AddSection("Farm")
+local Farming = Tabs.Main:AddSection("Farming")
 local listfastattack = {'Normal Attack','Super Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
@@ -2528,7 +2528,7 @@ local listfastattack = {'Normal Attack','Super Fast Attack'}
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttackFaiFao_Mode = Value
 	if _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.1
+		_G.Fast_Delay = 0.01
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0
 	end
@@ -2536,7 +2536,7 @@ end)
 
     local DropdownSelectWeapon = Tabs.Main:AddDropdown("DropdownSelectWeapon", {
         Title = "Weapon",
-        Description = "Select Weapon",
+        Description = "Chọn Vũ Khí",
         Values = {'Melee','Sword','Blox Fruit'},
         Multi = false,
         Default = 1,
@@ -2586,7 +2586,7 @@ end)
     end)
 
 
-    local ToggleAutoFarm = Tabs.Main:AddToggle("ToggleAutoFarm", {
+    local ToggleLevel = Tabs.Main:AddToggle("ToggleLevel", {
         Title = "Auto Farm",
         Description = "Farm",
         Default = false })
@@ -2648,7 +2648,7 @@ end)
 
 
 
-        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )",Description = "Cày Kẹo ( Chỉ Cấp Độ Tối Đa )", Default = false })
+        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )",Description = "Farm Candy )", Default = false })
         ToggleCandy:OnChanged(function(Value)
            _G.AutoCandy = Value
            if Value == false then
@@ -2697,8 +2697,8 @@ end)
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     local ToggleMobAura = Tabs.Main:AddToggle("ToggleMobAura", {
-        Title = "Mob Aura",
-        Description = "Near Mob",
+        Title = "Kill Near | Mob Aura",
+        Description = "Đánh Quái Ở Gần",
         Default = false })
     ToggleMobAura:OnChanged(function(Value)
         _G.AutoNear = Value
@@ -2744,8 +2744,8 @@ end)
 
 
     local ToggleCastleRaid = Tabs.Main:AddToggle("ToggleCastleRaid", {
-        Title = "Auto Castle Raid",
-        Description = "Castle Raid", 
+        Title = "Auto Castle Raid | Pirates Castle",
+        Description = "Đánh Hải Tặc ở Pháo Đài", 
         Default = false })
     ToggleCastleRaid:OnChanged(function(Value)
         _G.CastleRaid = Value
@@ -2786,7 +2786,7 @@ end)
 
 Tabs.Main:AddButton({
     Title = "Auto Chest",
-    Description = "Chest",
+    Description = "Nhặt rương",
     Callback = function()
         _G.JoinTeam = "Pirates"
         _G.Stop_If_Has_Items = true
@@ -2796,7 +2796,7 @@ Tabs.Main:AddButton({
 
       Tabs.Main:AddButton({
         Title = "Redeem All Code",
-        Description = "Redeem Code",
+        Description = "Nhập Hết Code",
         Callback = function()
             RedeemCode()
         end
@@ -2808,7 +2808,7 @@ Tabs.Main:AddButton({
 
     Tabs.Main:AddButton({
         Title = "Fps Booster",
-        Description = "Fix Lag",
+        Description = "Giảm Lag",
         Callback = function()
             FPSBooster()
         end
