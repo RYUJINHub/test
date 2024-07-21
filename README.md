@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Icream Hub",
-    SubTitle = "By x_2swiftz",
+    SubTitle = "By x_2Swiftz",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
     Acrylic = false,
@@ -7451,8 +7451,8 @@ end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
 Fluent:Notify({
-    Title = "Infinite Hub",
+    Title = "Icecream Hub",
     Content = "The script has been loaded.",
     Durtion = 3
 })
-warn("Infinite Hub Loading Completed !!")
+warn("Icecream Hub Loading Completed !!")
