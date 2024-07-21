@@ -2514,8 +2514,8 @@ end
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
-local Farm = Tabs.Main:AddSection("Farm")
-local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
+local Farming = Tabs.Main:AddSection("Farm")
+local listfastattack = {'Normal Attack','Super Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Select Fast Attack",
@@ -2586,7 +2586,7 @@ end)
     end)
 
 
-    local ToggleAutoFarm = Tabs.Main:AddToggle("ToggleAutoFArm", {
+    local ToggleAutoFarm = Tabs.Main:AddToggle("ToggleAutoFarm", {
         Title = "Auto Farm",
         Description = "Farm",
         Default = false })
@@ -2796,7 +2796,7 @@ Tabs.Main:AddButton({
 
       Tabs.Main:AddButton({
         Title = "Redeem All Code",
-        Description = "Nhập Hết Code",
+        Description = "Redeem Code",
         Callback = function()
             RedeemCode()
         end
@@ -2808,7 +2808,7 @@ Tabs.Main:AddButton({
 
     Tabs.Main:AddButton({
         Title = "Fps Booster",
-        Description = "Giảm Lag",
+        Description = "Fix Lag",
         Callback = function()
             FPSBooster()
         end
