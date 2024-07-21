@@ -2514,7 +2514,7 @@ end
 -- Hehe
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
-local Farming = Tabs.Main:AddSection("Farming")
+local Farm = Tabs.Main:AddSection("Farm")
 local listfastattack = {'Normal Attack','Super Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
