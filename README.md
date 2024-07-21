@@ -2648,7 +2648,7 @@ end)
 
 
 
-        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )",Description = "Cày Kẹo ( Chỉ Cấp Độ Tối Đa )", Default = false })
+        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy)",Description = "Farm Candy", Default = false })
         ToggleCandy:OnChanged(function(Value)
            _G.AutoCandy = Value
            if Value == false then
@@ -4885,10 +4885,8 @@ end)
             end
         end)
         Options.ToggleWhite:SetValue(false)
-      
-
-
-        local SKill = Tabs.Setting:AddSection("Skill Mastery")
+    
+     local SKill = Tabs.Setting:AddSection("Skill Mastery")
 local ToggleZ = Tabs.Setting:AddToggle("ToggleZ", {Title = "Skill Z",Description = "Kĩ Năng Z", Default = true })
 ToggleZ:OnChanged(function(Value)
     SkillZ = Value
