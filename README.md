@@ -2828,7 +2828,7 @@ local Mastery = Tabs.Main:AddSection("Mastery Farm")
 
     local ToggleMasteryFruit = Tabs.Main:AddToggle("ToggleMasteryFruit", {
         Title = "Auto BF Mastery",
-        Description = "Cày Thông Thạo Trái", 
+        Description = "Farm BF", 
         Default = false })
     ToggleMasteryFruit:OnChanged(function(Value)
         AutoFarmMasDevilFruit = Value
@@ -2839,7 +2839,7 @@ local Mastery = Tabs.Main:AddSection("Mastery Farm")
 
     local SliderHealt = Tabs.Main:AddSlider("SliderHealt", {
         Title = "Health (%) Mob",
-        Description = "Phần Trăm Máu Quái",
+        Description = "Health Mob",
         Default = 25,
         Min = 0,
         Max = 100,
