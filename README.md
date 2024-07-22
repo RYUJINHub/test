@@ -2739,7 +2739,7 @@ end)
 
 Tabs.Main:AddButton({
     Title = "Auto Chest",
-    Description = "Nhặt rương",
+    Description = "Tween to Chest",
     Callback = function()
         _G.JoinTeam = "Pirates"
         _G.Stop_If_Has_Items = true
@@ -2749,7 +2749,7 @@ Tabs.Main:AddButton({
 
       Tabs.Main:AddButton({
         Title = "Redeem All Code",
-        Description = "Nhập Hết Code",
+        Description = "Redeem Code",
         Callback = function()
             RedeemCode()
         end
@@ -2814,7 +2814,7 @@ Tabs.Main:AddButton({
 local Mastery = Tabs.Main:AddSection("Mastery Farm")
     local DropdownMastery = Tabs.Main:AddDropdown("DropdownMastery", {
         Title = "Mastery Mode",
-        Description = "Chọn Chế Độ Thông Thạo",
+        Description = "AutoFarm Mastery",
         Values = {"Level","Near Mobs",},
         Multi = false,
         Default = 1,
@@ -3013,7 +3013,7 @@ local StatusBone = Tabs.Main:AddParagraph({
 
 local ToggleBone = Tabs.Main:AddToggle("ToggleBone", {
     Title = "Auto Bone",
-    Description = "Cày Xương", 
+    Description = "AutoFarm Bone", 
     Default = false })
 ToggleBone:OnChanged(function(Value)
     _G.AutoBone = Value
@@ -3074,7 +3074,7 @@ spawn(function()
     end
 end)
 
-local ToggleRandomBone = Tabs.Main:AddToggle("ToggleRandomBone", {Title = "Random Bone",Description = "Đổi xương", Default = false })
+local ToggleRandomBone = Tabs.Main:AddToggle("ToggleRandomBone", {Title = "Random Bone",Description = "Random Bone", Default = false })
 ToggleRandomBone:OnChanged(function(Value)  
 		_G.AutoRandomBone = Value
 end)
@@ -3120,7 +3120,7 @@ end)
 
 local ToggleCake = Tabs.Main:AddToggle("ToggleCake", {
     Title = "Auto Cake Prince",
-    Description = "Cày Tư Lệnh Bột", 
+    Description = "Farm Cake Prince", 
     Default = false })
 ToggleCake:OnChanged(function(Value)
  _G.CakePrince = Value
@@ -3185,7 +3185,7 @@ spawn(function()
 
     local ToggleSpawnCake = Tabs.Main:AddToggle("ToggleSpawnCake", {
         Title = "Auto Spawn Cake Prince",
-        Description = "Tự Động Triệu Hồi Tư lệnh Bột", 
+        Description = "Spawn Cake Prince", 
         Default = true })
     ToggleSpawnCake:OnChanged(function(Value)
       _G.SpawnCakePrince = Value
@@ -3214,7 +3214,7 @@ end
 	local MiscFarm = Tabs.Main:AddSection("Ectoplasm Farm")
     local ToggleVatChatKiDi = Tabs.Main:AddToggle("ToggleVatChatKiDi", {
         Title = "Auto Ectoplasm",
-        Description = "Cày vật Chất kì Dị", 
+        Description = "Ectoplasm", 
         Default = false })
     ToggleVatChatKiDi:OnChanged(function(Value)
         _G.Ectoplasm = Value
@@ -3274,8 +3274,8 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
 
     local DropdownBoss = Tabs.Main:AddDropdown("DropdownBoss", {
-        Title = "Dropdown",
-        Description = "Chọn Boss",
+        Title = "Select Boss",
+        Description = "Kill Boss",
         Values = tableBoss,
         Multi = false,
         Default = 1,
@@ -3343,8 +3343,8 @@ local boss = Tabs.Main:AddSection("Boss Farm")
         end
 
     local DropdownMaterial = Tabs.Main:AddDropdown("DropdownMaterial", {
-        Title = "Dropdown",
-        Description = "Chọn Nguyên Liệu",
+        Title = "Select Material",
+        Description = "AutoFarm Material",
         Values = MaterialList,
         Multi = false,
         Default = 1,
@@ -3358,7 +3358,7 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
     local ToggleMaterial = Tabs.Main:AddToggle("ToggleMaterial", {
         Title = "Auto Material",
-        Description = "Cày Nguyên Liệu", 
+        Description = "AutoFarm Material", 
         Default = false })
 
     ToggleMaterial:OnChanged(function(Value)
