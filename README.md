@@ -3275,7 +3275,7 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
     local DropdownBoss = Tabs.Main:AddDropdown("DropdownBoss", {
         Title = "Select Boss",
-        Description = "Kill Boss",
+        Description = "Boss",
         Values = tableBoss,
         Multi = false,
         Default = 1,
@@ -3288,7 +3288,7 @@ local boss = Tabs.Main:AddSection("Boss Farm")
 
 	local ToggleAutoFarmBoss = Tabs.Main:AddToggle("ToggleAutoFarmBoss", {
         Title = "Kill Boss",
-        Description = "Đánh Boss", 
+        Description = "Kill Boss", 
         Default = false })
 
     ToggleAutoFarmBoss:OnChanged(function(Value)
