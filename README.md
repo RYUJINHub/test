@@ -2647,58 +2647,11 @@ end)
 
 
 
-
-        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )",Description = "Cày Kẹo ( Chỉ Cấp Độ Tối Đa )", Default = false })
-        ToggleCandy:OnChanged(function(Value)
-           _G.AutoCandy = Value
-           if Value == false then
-            wait()
-            Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            wait()
-        end
-        end)
-        Options.ToggleCandy:SetValue(false)
-
-		local CandyPos = CFrame.new(-16603.197265625, 130.3873748779297, 1087.16455078125)
-		spawn(function()
-				  while wait() do 
-					  if _G.AutoCandy then
-						  pcall(function()
-							toTarget(CandyPos)
-							  if game:GetService("Workspace").Enemies:FindFirstChild("Isle Outlaw") or game:GetService("Workspace").Enemies:FindFirstChild("Island Boy") or game:GetService("Workspace").Enemies:FindFirstChild("Sun-kissed Warrior") or game:GetService("Workspace").Enemies:FindFirstChild("Isle Champion") then
-								  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-									  if v.Name == "Isle Outlaw" or v.Name == "Island Boy" or v.Name == "Sun-kissed Warrior" or v.Name == "Isle Champion" then
-										 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-											 repeat wait(_G.Fast_Delay)
-												 AttackNoCoolDown()
-                                                 bringmob = true
-												 AutoHaki()
-												 EquipTool(SelectWeapon)
-												 Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
-												 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-												 v.HumanoidRootPart.Transparency = 1
-												 v.Humanoid.JumpPower = 0
-												 v.Humanoid.WalkSpeed = 0
-												 v.HumanoidRootPart.CanCollide = false
-												 FarmPos = v.HumanoidRootPart.CFrame
-												 MonFarm = v.Name
-											  until not _G.AutoCandy or not v.Parent or v.Humanoid.Health <= 0
-                                              bringmob = false
-                                            end
-									  end
-								  end
-                                  Tween(CFrame.new(-16599.1484375, 154.2681121826172, -166.32186889648438))
-							end
-						end)
-					  end
-				  end
-			  end)
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     local ToggleMobAura = Tabs.Main:AddToggle("ToggleMobAura", {
-        Title = "Kill Near | Mob Aura",
-        Description = "Đánh Quái Ở Gần",
+        Title = "Mob Aura",
+        Description = "Near Mob",
         Default = false })
     ToggleMobAura:OnChanged(function(Value)
         _G.AutoNear = Value
@@ -2744,8 +2697,8 @@ end)
 
 
     local ToggleCastleRaid = Tabs.Main:AddToggle("ToggleCastleRaid", {
-        Title = "Auto Castle Raid | Pirates Castle",
-        Description = "Đánh Hải Tặc ở Pháo Đài", 
+        Title = "Auto Castle Raid",
+        Description = "Castle Raid", 
         Default = false })
     ToggleCastleRaid:OnChanged(function(Value)
         _G.CastleRaid = Value
