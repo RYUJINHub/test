@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Syxnic Hub",
-    SubTitle = "By xWikiz & Blox Fruit",
+    SubTitle = "By xWikiz & Blox | Fruit",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
     Acrylic = false,
