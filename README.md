@@ -5047,7 +5047,7 @@ end
 
 local SelectedPly = Tabs.Player:AddDropdown("SelectedPly", {
     Title = "Select Player",
-    Description = "Chọn Người Chơi",
+    Description = "",
     Values = Playerslist,
     Multi = false,
     Default = 1,
@@ -5633,8 +5633,8 @@ elseif Third_Sea then
     end
 
 local DropdownIsland = Tabs.Teleport:AddDropdown("DropdownIsland",{
-    Title = "Dropdown",
-    Description = "Chọn Đảo",
+    Title = "Select Island",
+    Description = "",
     Values = IslandList,
     Multi = false,
     Default = 1,
