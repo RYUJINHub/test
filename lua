@@ -1,19 +1,3 @@
---func
- AutoFarmFunc = coroutine.create(function()
-     while wait() do
-         if not AutoFarm then
-             AutoFarmRunning = false
-             coroutine.yield()
-         end
-         AutoFarmRunning = true
-         pcall(function()
-             game:GetService("ReplicatedStorage").RemoteEvents.NextStage:FireServer()
-                end
-            end)
-    end
-end)
-
-
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -50,9 +34,7 @@ local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoStage", Default = f
 
     Toggle:OnChanged(function(Value)
         AutoFarm = Value
-    if Value and not AutoFarmRunning then
-        coroutine.resume(AutoFarmFunc)
-    end
+    game:GetService("ReplicatedStorage").RemoteEvents.NextStage:FireServer()
     end)
 
     Options.MyToggle:SetValue(false)
