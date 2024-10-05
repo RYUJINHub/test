@@ -1,107 +1,9 @@
---!native
---!optimize 2
-
-if not ExecutorSupport then print("[mspaint] Loading stopped, please use the official loadstring for mspaint. (ERROR: ExecutorSupport == nil)") return end
-if getgenv().mspaint_loaded then print("[mspaint] Loading stopped. (ERROR: Already loaded)") return end
-
---// Services \\--
-local HttpService = game:GetService("HttpService")
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-local TeleportService = game:GetService("TeleportService")
-local Workspace = game:GetService("Workspace")
-
---// Loading Wait \\--
-if not game.IsLoaded then game.Loaded:Wait() end
-if Players.LocalPlayer.PlayerGui:FindFirstChild("LoadingUI") and Players.LocalPlayer.PlayerGui.LoadingUI.Enabled then
-    repeat task.wait() until not game.Players.LocalPlayer.PlayerGui.LoadingUI.Enabled
-end
-
---// Variables \\--
-local Script = {
-    CurrentBadge = 0,
-    Achievements = {
-        "SurviveWithoutHiding",
-        "SurviveGloombats",
-        "SurviveSeekMinesSecond",
-        "TowerHeroesGoblino",
-        "EscapeBackdoor",
-        "SurviveFiredamp",
-        "CrucifixDread",
-        "EnterRooms",
-        "EncounterVoid",
-        "Join",
-        "DeathAmt100",
-        "UseCrucifix",
-        "EncounterSpider",
-        "SurviveHalt",
-        "SurviveRush",
-        "DeathAmt10",
-        "Revive",
-        "PlayFriend",
-        "SurviveNest",
-        "CrucifixFigure",
-        "CrucifixAmbush",
-        "PlayerBetrayal",
-        "SurviveEyes",
-        "KickGiggle",
-        "EscapeMines",
-        "GlowstickGiggle",
-        "DeathAmt1",
-        "SurviveSeek",
-        "UseRiftMutate",
-        "CrucifixGloombatSwarm",
-        "SurviveScreech",
-        "SurviveDread",
-        "SurviveSeekMinesFirst",
-        "CrucifixHalt",
-        "TowerHeroesVoid",
-        "JoinLSplash",
-        "CrucifixDupe",
-        "EncounterGlitch",
-        "JeffShop",
-        "CrucifixScreech",
-        "SurviveGiggle",
-        "EscapeHotelMod1",
-        "SurviveDupe",
-        "CrucifixRush",
-        "EscapeBackdoorHunt",
-        "EscapeHotel",
-        "CrucifixGiggle",
-        "EscapeFools",
-        "UseRift",
-        "SpecialQATester",
-        "EscapeRetro",
-        "TowerHeroesHard",
-        "EnterBackdoor",
-        "EscapeRooms1000",
-        "EscapeRooms",
-        "EscapeHotelMod2",
-        "EncounterMobble",
-        "CrucifixGrumble",
-        "UseHerbGreen",
-        "CrucifixSeek",
-        "JeffTipFull",
-        "SurviveFigureLibrary",
-        "TowerHeroesHotel",
-        "CrucifixEyes",
-        "BreakerSpeedrun",
-        "SurviveAmbush",
-        "SurviveHide",
-        "JoinAgain"
-    },
-    Functions = {File = {}},
-    ElevatorPresetData = {},
-    ElevatorPresets = {}
-}
-
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Kurumi hub",
+    Title = "Find button | Sinestria Hub",
     SubTitle = "",
     TabWidth = 160,
     Size = UDim2.fromOffset(510, 390),
@@ -121,118 +23,29 @@ local Options = Fluent.Options
 do
     Fluent:Notify({
         Title = "Notification",
-        Content = "",
-        SubContent = "SubContent", -- Optional
+        Content = "Sinestria Hub running script.",
+        SubContent = "", -- Optional
         Duration = 10 -- Set to nil to make the notification not disappear
     })
 
 end
 
-function Script.Functions.SetupVariables()
-    if ExecutorSupport["require"] then
-        for achievementName, _ in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
-            if table.find(Script.Achievements, achievementName) then continue end
-    
-            table.insert(Script.Achievements, achievementName)
-        end
-    else
-        local badgeList = achievementsFrame:WaitForChild("List", math.huge)
 
-        if badgeList then
-            repeat task.wait(.5) until #badgeList:GetChildren() ~= 0
-            
-            Library:GiveSignal(badgeList.ChildAdded:Connect(function(badge)
-                if not badge:IsA("ImageButton") then return end
-                if table.find(Script.Achievements, badge.Name) then return end
-                table.insert(Script.Achievements, badge.Name)
-            end))
 
-            for _, badge in pairs(badgeList:GetChildren()) do
-                if not badge:IsA("ImageButton") then continue end
-                if table.find(Script.Achievements, badge.Name) then continue end
-
-                table.insert(Script.Achievements, badge.Name)
-            end
-        end
-    end
-end
-
-function Script.Functions.LoopAchievements()
-    task.spawn(function()
-        while Toggles.LoopAchievements.Value and not Library.Unloaded do
-            if Script.CurrentBadge >= #Script.Achievements then Script.CurrentBadge = 0 end
-            Script.CurrentBadge += 1
-
-            local random = Script.Achievements[Script.CurrentBadge]
-            remotesFolder.FlexAchievement:FireServer(random)
-
-            task.wait(Options.LoopAchievementsSpeed.Value)
-        end
-    end)
-end
-
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Loop Achiement", Default = false })
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoStage", Default = false })
 
     Toggle:OnChanged(function(Value)
-       
+        game:GetService("ReplicatedStorage").RemoteEvents.NextStage:FireServer()
     end
     end)
+
     Options.MyToggle:SetValue(false)
 
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Collect Playtime Rewards", Default = false })
+local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Spinwheel", Default = false })
 
 Toggle:OnChanged(function(Value)
-_G.Rewards = Value
-if _G.Rewards then
-     while _G.Rewards do wait()
-          local args = {
-               [1] = 1
-           }
-           
-          game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-          
-          local args = {
-               [1] = 2
-           }
-          
-          game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-          
-          local args = {
-               [1] = 3
-           }
-           
-           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-           
-          
-           local args = {
-               [1] = 4
-           }
-           
-           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-           
-
-           local args = {
-               [1] = 5
-           }
-           
-           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-           
-
-           local args = {
-               [1] = 6
-           }
-           
-           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-          
-
-           local args = {
-               [1] = 7
-           }
-           
-           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlayRewards"):FireServer(unpack(args))
-
-     end
+game:GetService("ReplicatedStorage").RemoteEvents.SpinWheel:FireServer()
 end
 end)
 
@@ -406,7 +219,7 @@ Window:SelectTab(1)
 
 Fluent:Notify({
     Title = "Notification",
-    Content = "The script has been loading.",
+    Content = "The script has been loaded.",
     Duration = 5
 })
 
@@ -440,7 +253,7 @@ ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.156000003, 0, -0, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
-ImageButton.Image = ""
+ImageButton.Image = "rbxassetid://16731758728"
 ImageButton.MouseButton1Click:Connect(function()
 game.CoreGui:FindFirstChild("ScreenGui").Enabled = not game.CoreGui:FindFirstChild("ScreenGui").Enabled
 end)
