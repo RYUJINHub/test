@@ -33,7 +33,6 @@ end
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoStage", Default = false })
 
     Toggle:OnChanged(function(Value)
-        AutoFarm = Value
     game:GetService("ReplicatedStorage").RemoteEvents.NextStage:FireServer()
     end)
 
