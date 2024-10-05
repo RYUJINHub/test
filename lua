@@ -96,19 +96,6 @@ local Script = {
     ElevatorPresets = {}
 }
 
-local supportsFileSystem = (ExecutorSupport["isfile"] and ExecutorSupport["delfile"] and ExecutorSupport["listfiles"] and ExecutorSupport["writefile"] and ExecutorSupport["makefolder"] and ExecutorSupport["isfolder"])
-
-local playerGui = localPlayer.PlayerGui
-local mainUI = playerGui:WaitForChild("MainUI")
-local lobbyFrame = mainUI:WaitForChild("LobbyFrame")
-local achievementsFrame = lobbyFrame:WaitForChild("Achievements")
-local createElevatorFrame = lobbyFrame:WaitForChild("CreateElevator")
-
-local remotesFolder = ReplicatedStorage:WaitForChild("RemotesFolder")
-local createElevator = remotesFolder:WaitForChild("CreateElevator")
-
-local lobbyElevators = workspace:WaitForChild("Lobby"):WaitForChild("LobbyElevators")
-
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
