@@ -30,13 +30,10 @@ do
 
 end
 
-
-
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoStage", Default = false })
 
     Toggle:OnChanged(function(Value)
         game:GetService("ReplicatedStorage").RemoteEvents.NextStage:FireServer()
-    end
     end)
 
     Options.MyToggle:SetValue(false)
@@ -46,7 +43,6 @@ local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "Auto Spinwheel", Defaul
 
 Toggle:OnChanged(function(Value)
 game:GetService("ReplicatedStorage").RemoteEvents.SpinWheel:FireServer()
-end
 end)
 
 Options.MyToggle:SetValue(false)
